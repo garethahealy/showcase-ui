@@ -37,6 +37,7 @@
         <extension module="org.wildfly.extension.undertow"/>
     </extensions>
     <system-properties>
+        <property name="org.jbpm.casemgmt.showcase.url" value="/"/>
         <property name="org.kie.server.location" value="${env.KIE_SERVER_LOCATION}"/>
         <property name="org.kie.server.user" value="${env.KIE_USER}"/>
         <property name="org.kie.server.pwd" value="${env.KIE_USERNAME_PWD}"/>
@@ -421,13 +422,13 @@
             <security-domains>
                 <security-domain name="other" cache-type="default">
                     <authentication>
-                        <login-module code="Remoting" flag="optional" module="undefined">
+                        <login-module code="Remoting" flag="optional">
                             <module-option name="password-stacking" value="useFirstPass"/>
                         </login-module>
-                        <login-module code="RealmDirect" flag="required" module="undefined">
+                        <login-module code="RealmDirect" flag="required">
                             <module-option name="password-stacking" value="useFirstPass"/>
                         </login-module>
-                        <login-module code="org.kie.security.jaas.KieLoginModule" flag="optional" module="deployment.rhpam-case-mgmt-showcase.war"/>
+                        <login-module code="org.kie.security.jaas.KieLoginModule" flag="optional" module="deployment.ROOT.war"/>
                     </authentication>
                 </security-domain>
                 <security-domain name="jboss-web-policy" cache-type="default">

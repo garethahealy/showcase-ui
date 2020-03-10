@@ -1,0 +1,8 @@
+#!/bin/sh
+
+echo " -----> Pre Assemble"
+
+# Global S2I variable setup
+source /tmp/src/.s2i/bin/s2i-setup
+
+$EAP_HOME/bin/add-user.sh -s -a --user "$KIE_USER" --password "$KIE_USERNAME_PWD" --role kie-server,rest-all,admin,analyst,kiemgmt,manager,user

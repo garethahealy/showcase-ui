@@ -4,15 +4,44 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.rhpam.case</groupId>
-    <artifactId>war</artifactId>
-    <version>1.0</version>
-    <packaging>pom</packaging>
+    <artifactId>showcase-wrapper</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>com.rhpam.case</groupId>
             <artifactId>showcase</artifactId>
             <version>1.0.0-SNAPSHOT</version>
+            <type>war</type>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <artifactItems>
+                        <artifactItem>
+                            <groupId>com.rhpam.case</groupId>
+                            <artifactId>showcase</artifactId>
+                            <version>1.0.0-SNAPSHOT</version>
+                            <type>war</type>
+                            <outputDirectory>${project.build.directory}/war</outputDirectory>
+                            <destFileName>ROOT.war</destFileName>
+                        </artifactItem>
+                    </artifactItems>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
